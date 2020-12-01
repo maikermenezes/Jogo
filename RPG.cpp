@@ -4,13 +4,8 @@
 #include <time.h>
 #define DEFAULT_FONT_SIZE 120
 
-
 void habilidades(){
-
-
     Rectangle habilidade = {20, 20, 960, 720};
-    
-    //DrawRectangleRec{habilidade, BLACK};
     
     DrawText("Golpe perfurante (guerreiro): O guerreiro deferir o triplo do dano", 30 , 20, 15, WHITE);
     DrawText("Ataque Comum (guerreiro): Efeito passivo -  A cada três ataques o guerreiro realiza dois ataques extras.", 30 , 45, 15, WHITE);
@@ -27,9 +22,6 @@ void habilidades(){
     DrawText("Bola de fogo (mago): Explosão que causa dano moderado ", 30, 245, 15, WHITE);
     DrawText("Chuva de raios (mago): Cunjuração que causa quantia massiva de dano ", 30, 270, 15, WHITE);
     DrawText("Explosão criogênica (mago): Causa uma peque quantia de dano e atordoa o alvo por duas rodadas ", 30, 295, 15, WHITE);
-
-   
-
 }
 
 void ataqueComum()
@@ -41,9 +33,7 @@ void ataqueComum()
     float frameWidth = (float)(ataqueComum.width / 5);
     int maxFrames = (int)(ataqueComum.width / (int)frameWidth);    
     float timer = 0.0f;
-    int frame = 0;
-    
-    
+    int frame = 0;  
     while (frame <= 5 ){     
     
         BeginDrawing();
@@ -61,8 +51,7 @@ void ataqueComum()
             DrawTextureRec(ataqueComum, Rectangle{frameWidth * frame, 0, frameWidth, ataqueComum.height},   Vector2 {x,y},  RAYWHITE);
 
         EndDrawing(); 
-    }
-    
+    }   
     UnloadTexture(ataqueComum);
 }
 
@@ -75,9 +64,7 @@ void ataqueComum2()
     float frameWidth = (float)(ataqueComum.width / 3);
     int maxFrames = (int)(ataqueComum.width / (int)frameWidth);    
     float timer = 0.0f;
-    int frame = 0;
-    
-    
+    int frame = 0; 
     while (frame <= 5 ){     
     
         BeginDrawing();
@@ -95,11 +82,9 @@ void ataqueComum2()
             DrawTextureRec(ataqueComum, Rectangle{frameWidth * frame, 0, frameWidth, ataqueComum.height},   Vector2 {x,y},  RAYWHITE);
 
         EndDrawing(); 
-    }
-    
+    }  
     UnloadTexture(ataqueComum);
 }
-
 void chuvaDeRaios(){
     
     const int screenWidth = 1000;
@@ -109,12 +94,9 @@ void chuvaDeRaios(){
     float frameWidth = (float)(chuvaDeRaios.width / 15);
     int maxFrames = (int)(chuvaDeRaios.width / (int)frameWidth);  
     float timer = 0.0f;
-    int frame = 0;
-    
-    while (frame <= 8){  
-    
+    int frame = 0;  
+    while (frame <= 8){      
         BeginDrawing();
-
         timer += GetFrameTime();
               if (timer >= 0.12f){
                   timer = 0.0f;
@@ -131,8 +113,7 @@ void chuvaDeRaios(){
     UnloadTexture(chuvaDeRaios);
 }
 
-void espada(){
-    
+void espada(){  
     const int  screenWidth = 1000;
     const int screenHeight = 740;
     Texture2D espadaEncantada = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/Map/extra/ataques/espada.png");
@@ -141,10 +122,8 @@ void espada(){
     int maxFrames = (int)(espadaEncantada.width / (int)frameWidth);
     float timer = 0.0f;
     int frame = 0;
-
     while (frame <= 15) {       
-       BeginDrawing();
-            
+       BeginDrawing();          
         timer += GetFrameTime();
               if (timer >= 0.10f){
                   timer = 0.0f;
@@ -171,11 +150,8 @@ void golpePerfurante()
     int maxFrames = (int)(golpePerfurante.width / (int)frameWidth);    
     float timer = 0.0f;
     int frame = 0;
-  
     while (frame<=4) {     
-  
        BeginDrawing();
-
          timer += GetFrameTime();
               if (timer >= 0.20f){
                   timer = 0.0f;
@@ -202,8 +178,6 @@ void raioDeGelo()
     int maxFrames = (int)(raioDeGelo.width / (int)frameWidth);    
     float timer = 0.0f;
     int frame = 0;
-    
-    
     while (frame <= 10){     
     
        BeginDrawing();
@@ -223,8 +197,7 @@ void raioDeGelo()
 UnloadTexture(raioDeGelo);
 }
 
-void bolaDeFogo()
-{
+void bolaDeFogo(){
     const int screenWidth = 1000;
     const int screenHeight = 740;
     Texture2D bolaDeFogo = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/Map/extra/ataques/boladefogo.png");
@@ -233,10 +206,8 @@ void bolaDeFogo()
     int maxFrames = (int)(bolaDeFogo.width / (int)frameWidth);  
     float timer = 0.0f;
     int frame = 0;
-   
     while (frame<=10) {          
        BeginDrawing();
-
          timer += GetFrameTime();
               if (timer >= 0.15f){
                   timer = 0.0f;
@@ -255,50 +226,32 @@ UnloadTexture(bolaDeFogo);
 
 struct Dimensions
 {
-    // real screen coordinates
     float width;
     float height;
-
-    // virtual screen (internal resolution of the game assets)
     float virtual_width;
     float virtual_height;
-
-    // scale used for graphics
     float scale_x;
     float scale_y;
-
-    //default font size (scaled)
     float font_size;
 };
-
 
 struct Dimensions screen;
 
 int main(void)
 {
-
-        screen.width=1000;
-        screen.height=740;
+     screen.width=1000;
+     screen.height=740;
     
     const int screenWidth = 1000;
     const int screenHeight = 740;
     
-     InitWindow(screenWidth, screenHeight, "RPG");
+    InitWindow(screenWidth, screenHeight, "RPG");
    
     screen.virtual_width=3840;
-    screen.virtual_height=2160;
-
-    // Usado pra fazer a imagem se mexer
+    screen.virtual_height=2160; 
     screen.scale_x = screen.width / screen.virtual_width;
     screen.scale_y = screen.height / screen.virtual_height ;
-
-    // Tamanho da fonte 
     screen.font_size = DEFAULT_FONT_SIZE * screen.scale_x;
-
-   
-
-    //--------------------------------------------------------------------------------------
-
 
     SetTargetFPS(60);   
 
@@ -329,19 +282,6 @@ int main(void)
     Texture2D fence = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/Map/fence.png");
     Texture2D wall = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/Map/wall.png");
     
-     /////////////////////////////////////------NPCs------////////////////////////////////////////
-    /*
-    Texture2D menino = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/NPCs/menino.png");
-    Texture2D menina = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/NPCs/menina.png");
-    Texture2D velho = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/NPCs/velho.png");
-    Texture2D velha = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/NPCs/velha.png");
-    Texture2D mulher = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/NPCs/mulher.png");
-    Texture2D viajante = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/NPCs/viajante.png");
-    Texture2D guard = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/NPCs/guard.png");
-    Texture2D seta = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/seta.png");
-    */
-    /////////////////////////////////////////------Castelo------////////////////////////////////////
-    
     Texture2D Castelo = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/castelo/castelo_rei.png");
     Texture2D Realeza = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/castelo/realeza.png");
     Texture2D hud = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/castelo/aliados.png");
@@ -350,7 +290,6 @@ int main(void)
     
     Texture2D mensageiro = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/mensageiroLeft.png");
     Texture2D mensageiroR = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/mensageiroRight.png");
-    
     
     //////////////////////////////////-----Floresta-----//////////////////////////////////////////////////////////
     
@@ -380,8 +319,7 @@ int main(void)
     Texture2D guerreiro = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/Map/extra/undeadS.png");
     
     //////////////////////////////////////////////-----Combate-----///////////////////////////////////////////////
-    
-       
+     
     Texture2D floresta = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/Map/extra/floresta.png");
     Texture2D Saida_Cidade = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/Map/extra/foradacidade.png");
     Texture2D Castelo_mago = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/Map/extra/castelomago.png");
@@ -398,10 +336,7 @@ int main(void)
     Texture2D Undead_Warlock = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/Map/extra/warlockG.png");
     Texture2D Red_Mage = LoadTexture("C:/Users/Maike Menezes/Documents/MAIKE/Programming/RPG/Map/extra/redmageG.png");
     
-    
-    
     ////////////////////////////////////////------Variáveis para animação------///////////////////////////
-     
      
       float frameWidth = (float)(knightUp.width / 3);
       float frameWidthM = (float)(mensageiro.width / 3);
@@ -414,7 +349,6 @@ int main(void)
       float x = 32.0f, y = 340.0f;
       float x1 = screenWidth/2 - 100, y1 = (screenHeight / 2) -100  ;
       
-      // variavel para os bonecos
       float frameWidth1 = (float)(Realeza.width/12);
       float frameHeight = (float)(Realeza.height/8);
       float frameWidth2 = (float) (aventureiros.width/9);
@@ -423,8 +357,6 @@ int main(void)
       float frameWidthC = (float)(pisoC.width / 8);
       float frameHeightC = (float)(pisoC.height / 4);
     
-    
-   
     char *story[3];
 
     story[0]="A cidade de Sindhar sempre foi famosa pelos grandiosos magos\nque conseguiram selar o Rei demônio a vários séculos atrás...";
@@ -501,22 +433,14 @@ int item2 = 1;
 int item3 = 1;
 int item4 = 1;
 
-
-    
     float a = screenWidth/2 - 150, s = (screenHeight / 2) - 100 ;
     
-   
-
-    // PlaySound(music);
-     // mudar de mapa
-      int entrada = 0;
-      // variavel para mudar as falas no castelo
-      int tempo = 0;
-      int tempo1 = 0;
-      float xM = 500.0f;
-      int sentido = 0;
-
-
+    int entrada = 0;
+    int tempo = 0;
+    int tempo1 = 0;
+    float xM = 500.0f;
+    int sentido = 0;
+      
     int story_time=0;
     int story_text=0;   
     
@@ -534,7 +458,6 @@ int item4 = 1;
    bool collision3 = false;
    bool collision4 = false;
     
-    
    Rectangle knight = {x, y, knightUp.width/3, knightUp.height};
     //Casas a esquerda
    Rectangle c1 = {0, 110, 470, 170};
@@ -545,15 +468,11 @@ int item4 = 1;
    //Parque
    Rectangle c4 = {570, 445 , 500, 210};
    
-
-    
     voltar:
     SetTargetFPS(60);
 
     while (!WindowShouldClose())   
-    {
-        
-        
+    { 
             collision = CheckCollisionRecs(knight,c1);
             collision2 = CheckCollisionRecs(knight,c2);
             collision3 = CheckCollisionRecs(knight,c3);
@@ -601,16 +520,11 @@ int item4 = 1;
                                 faded_color1);
                                                   
             }else{ part=2;}
-            
-           
-
-        } 
-
+        }
         if (part == 2){
         
         ClearBackground(RAYWHITE);
-        
-        
+    
        ////////////////////////////////////////------Gramado das casas ------/////////////////////////////////////////////////////////////////////////////////
       
         if(entrada == 0 || entrada == 2){
@@ -668,27 +582,17 @@ int item4 = 1;
         DrawTexturePro(fence, Rectangle{0, 0, (float)fence.width, (float)fence.height},  Rectangle {650, 50, 200, 100 }, Vector2 {0, 0}, 0, RAYWHITE); 
         DrawTexturePro(fence, Rectangle{0, 0, (float)fence.width, (float)fence.height},  Rectangle {850, 50, 200, 100 }, Vector2 {0, 0}, 0, RAYWHITE);   
         DrawTexturePro(gate, Rectangle{0, 0, (float)gate.width, (float)gate.height},  Rectangle {450, 50, 150, 100 }, Vector2 {0, 0}, 0, RAYWHITE);
-         ////////////////////////////////////////////////------NPCs------//////////////////////////////////////////////////////////////////////////////////////
-        //DrawTexturePro(velho, Rectangle{0, 0, (float)velho.width/3 , (float)velho.height},  Rectangle {920, 530, 50, 50}, Vector2 {0, 0}, 0, RAYWHITE);
-        //DrawTexturePro(velha, Rectangle{0, 0, (float)velha.width/3, (float)velha.height},  Rectangle {380, 530, 50, 50}, Vector2 {0, 0}, 0, RAYWHITE);
-        //DrawTexturePro(menina, Rectangle{0, 0, (float)menina.width / 3, (float)menina.height},  Rectangle {410, 480, 50, 50}, Vector2 {0, 0}, 0, RAYWHITE);
-        //DrawTexturePro(menino, Rectangle{(float)menino.width / 3, 0, (float)menino.width / 3, (float)menino.height},  Rectangle {700, 350 , 50, 50}, Vector2 {0, 0}, 0, RAYWHITE);
-        //DrawTexturePro(mulher, Rectangle{(float)mulher.width / 3, 0, (float)mulher.width / 3, (float)mulher.height},  Rectangle {300, 330 , 50, 50}, Vector2 {0, 0}, 0, RAYWHITE);
-        //DrawTexturePro(viajante, Rectangle{0, 0, (float)viajante.width, (float)viajante.height},  Rectangle {440, 642, 50, 50}, Vector2 {0, 0}, 0, RAYWHITE);
         DrawTexturePro(arvore, Rectangle{0, 0, (float)arvore.width, (float)arvore.height},  Rectangle {650, 400, 100, 150}, Vector2 {0, 0}, 0, RAYWHITE);  
         DrawTexturePro(arvore, Rectangle{0, 0, (float)arvore.width, (float)arvore.height},  Rectangle {630, 540, 100, 150}, Vector2 {0, 0}, 0, RAYWHITE); 
         DrawTexturePro(arvore, Rectangle{0, 0, (float)arvore.width, (float)arvore.height},  Rectangle {870, 420, 100, 150}, Vector2 {0, 0}, 0, RAYWHITE); 
        
         for (int i = 0; i<5 ; i++) DrawTexturePro(bush1, Rectangle{0, 0, (float)bush1.width, (float)bush1.height},  Rectangle {(float)100*i, 410, 100, 50 }, Vector2 {0, 0}, 0, RAYWHITE); 
-        //DrawTexturePro(guard, Rectangle{0, 0, (float)guard.width, (float)guard.height},  Rectangle {440, 110, 40, 60}, Vector2 {0, 0}, 0, RAYWHITE);
-        //DrawTexturePro(guard, Rectangle{0, 0, (float)guard.width, (float)guard.height},  Rectangle {565, 110, 40, 60}, Vector2 {0, 0}, 0, RAYWHITE);
         }
         
         if ( x > screenWidth) {
             mapa = 2;
-        x = 32.0f;}
-  
-        
+            x = 32.0f;
+        }
         if (x >= 495){
          if (xM <= 950 && sentido == 0 ){
             xM += GetFrameTime() * 120.0f;
@@ -732,8 +636,6 @@ int item4 = 1;
               DrawTexturePro(mensageiroR, Rectangle{frameWidthM * frame1, 0, frameWidthM, (float)mensageiroR.height},  Rectangle {1500, 500, 55, 55},  Vector2 {xM ,150}, 0,  RAYWHITE);
               }
          }
-        
-       
        // portao para entrar no castelo
        if(x >= 480 && y <= 120 && x <= 550){
            if(entrada == 0){
@@ -748,32 +650,22 @@ int item4 = 1;
                DrawText("Você já se reuniu com o Rei", 50, 20, 20, RAYWHITE  );
                DrawText("Vá recuperar o Orbe", 50, 60, 20, RAYWHITE  );
            }
-               
-          
        }
        }else if(entrada == 1){
          DrawTexture(Castelo, 0, 0, RAYWHITE);
          y = 340.0f;
-        
-        
-         //rei
          DrawTextureRec(Realeza, Rectangle{50, 0, frameWidth1, frameHeight},   Vector2 {440,190},  RAYWHITE);
-         //rainha
          DrawTextureRec(Realeza, Rectangle{200, 0, frameWidth1, frameHeight},   Vector2 {520,190},  RAYWHITE);
-         //principe
          DrawTextureRec(Realeza, Rectangle{330, 0, frameWidth1, frameHeight},   Vector2 {550,190},  RAYWHITE);
-         //princesa
          DrawTextureRec(Realeza, Rectangle{480, 0, frameWidth1, frameHeight},   Vector2 {390,190},  RAYWHITE);
-         //guardas
          for(float i = 0;i <390;i = i +50){
          DrawTextureRec(Realeza, Rectangle{330, 290, frameWidth1, frameHeight},   Vector2 {0 + i,280},  RAYWHITE);}
          for(float i = 590;i <1000;i = i +50){
          DrawTextureRec(Realeza, Rectangle{330, 290, frameWidth1, frameHeight},   Vector2 {0 + i,280},  RAYWHITE);}
          for(float i = 0;i < 1000;i = i + 50){
          DrawTextureRec(Realeza, Rectangle{330, 510, frameWidth1, frameHeight},   Vector2 {0+ i ,520},  RAYWHITE);}
-//////////////////////////////////////////////////////////-----Movimentação sem restrições------//////////////////////////////////
+
    } 
-   
            if (mapa == 2){
                comecarC = 1;
                if (x >= 290 && comecarC ==1 && aparecer ==5) break;
@@ -781,8 +673,6 @@ int item4 = 1;
                if (x >= 490 && comecarC ==1 && aparecer ==3) break;
                if (x >= 600 && comecarC ==1 && aparecer ==2) break;
                if (x >= 810 && comecarC ==1 && aparecer ==1) break;
-
-            
             for (int j=0; j<=50 ; j++){
         DrawTexturePro(gramaf, Rectangle{0, 0, (float)gramaf.width, (float)gramaf.height},  Rectangle {0, (float)(gramaf.height/4)*j, 25, 25}, Vector2 {0, 0}, 0, RAYWHITE); 
         for (int i = 0; i <=50; i++){
@@ -791,32 +681,30 @@ int item4 = 1;
         }
         for(int i = 0;i<200;i = i +100){
             DrawTexture(arvoree, 0, 0 + i, RAYWHITE);
-       
-           
             for(int j = 0; j<450;j= j +150){
             DrawTexture(arvoree, 0+j, 0+ i, RAYWHITE);
             DrawTexture(arvoree, 600+j, 0+ i, RAYWHITE);
             }}
             
         for(int i = 0;i<200;i = i +100){
-        
             DrawTexture(arvoree, 0, 460 + i, RAYWHITE);
-           
             for(int j = 0; j<450;j= j +150){
                 DrawTexture(arvoree, 0 + j, 460 + i, RAYWHITE);
                 DrawTexture(arvoree, 600+j, 460+ i, RAYWHITE);
  
-            }}
+                }
+            }
         
         for(float i = 0; i<750;i= i + 30){ 
        DrawTextureRec(trevas, Rectangle{0, 128, (float)trevas.width, (float)trevas.height/5},   Vector2 {905,0+i},  RAYWHITE);
        for(float c = 0; c< 500; c= c + 30){
            DrawTextureRec(trevas, Rectangle{0, 128, (float)trevas.width, (float)trevas.height/5},   Vector2 {905 +c,0+i},  RAYWHITE);
-        }}
+            }
+        }
         
-       if (aparecer >=1) DrawTextureRec(lamiap, Rectangle{0, 50, (float)lamiap.width/3, (float)lamiap.height/4},   Vector2 {880 ,330},  RAYWHITE);
+        if (aparecer >=1) DrawTextureRec(lamiap, Rectangle{0, 50, (float)lamiap.width/3, (float)lamiap.height/4},   Vector2 {880 ,330},  RAYWHITE);
         for(float i = 0;i < 180;i= i+60){
-    DrawTextureRec(pedra, Rectangle{0, 0, (float)pedra.width, (float)pedra.height/5},   Vector2 {430+i,20},  RAYWHITE);}
+        DrawTextureRec(pedra, Rectangle{0, 0, (float)pedra.width, (float)pedra.height/5},   Vector2 {430+i,20},  RAYWHITE);}
     
     for(float i = 0;i < 180;i= i+60){
     DrawTextureRec(pedra, Rectangle{0, 0, (float)pedra.width, (float)pedra.height/5},   Vector2 {430+i,660},  RAYWHITE);}
@@ -826,12 +714,10 @@ int item4 = 1;
     for(int i = 0;i < 240;i= i+60){
     DrawTexture(tora, 910,400+i, RAYWHITE);}
     
-   if (aparecer >=5) DrawTextureRec(slimet, Rectangle{70, 0, (float)slimet.width/3, (float)slimet.height/4},   Vector2 {300,350},  RAYWHITE);
-    
-   if (aparecer >= 2) DrawTextureRec(slimet, Rectangle{70, 0, (float)slimet.width/3, (float)slimet.height/4},   Vector2 {620,270},  SKYBLUE);
-   if (aparecer >=4) DrawTextureRec(ogro, Rectangle{75, 0, (float)ogro.width/3, (float)ogro.height/4},   Vector2 {420,150},  RAYWHITE);
-   if (aparecer >=3) DrawTextureRec(wolf, Rectangle{75, 290, (float)wolf.width/3, (float)wolf.height/4},   Vector2 {500,500},  RAYWHITE);
-    
+    if (aparecer >=5) DrawTextureRec(slimet, Rectangle{70, 0, (float)slimet.width/3, (float)slimet.height/4},   Vector2 {300,350},  RAYWHITE); 
+    if (aparecer >= 2) DrawTextureRec(slimet, Rectangle{70, 0, (float)slimet.width/3, (float)slimet.height/4},   Vector2 {620,270},  SKYBLUE);
+    if (aparecer >=4) DrawTextureRec(ogro, Rectangle{75, 0, (float)ogro.width/3, (float)ogro.height/4},   Vector2 {420,150},  RAYWHITE);
+    if (aparecer >=3) DrawTextureRec(wolf, Rectangle{75, 290, (float)wolf.width/3, (float)wolf.height/4},   Vector2 {500,500},  RAYWHITE);
     
     if(y<30){
         do{
@@ -848,13 +734,11 @@ int item4 = 1;
             y++;
         }while(y<= 200);
     }
-    
     if(y<190 && x<410){
         do{
             x++;
         }while(x<410);
     }
-    
     if(y<= 200 && x>610){
         do{
             y++;
@@ -895,12 +779,10 @@ int item4 = 1;
     }
     if (x >= 950) {
         mapa = 3;
-        x = 32.0f;
-            
+        x = 32.0f;      
     }
-           }
+          }
              
-        
         if (mapa == 3) {
             
                comecarC = 2;
@@ -920,36 +802,26 @@ int item4 = 1;
        DrawTexture(agua, 700, 150, RAYWHITE);DrawTexture(agua, 700, 50, RAYWHITE);DrawTexture(agua, 700, 0, RAYWHITE);
        DrawTexture(agua, 800, 150, RAYWHITE);DrawTexture(agua, 800, 50, RAYWHITE);DrawTexture(agua, 800, 0, RAYWHITE);
        DrawTexture(agua, 900, 150, RAYWHITE);DrawTexture(agua, 900, 50, RAYWHITE);DrawTexture(agua, 900, 0, RAYWHITE);
-       
-       DrawTexture(barra, 660, 0, RAYWHITE);DrawTexture(barra, 660, 100, RAYWHITE);
-       
+       DrawTexture(barra, 660, 0, RAYWHITE);DrawTexture(barra, 660, 100, RAYWHITE);    
        DrawTexture(pilastra, 685, 150, RAYWHITE);
-       DrawTexture(pilastra, 690, 400, RAYWHITE);
-       
+       DrawTexture(pilastra, 690, 400, RAYWHITE);  
        DrawTextureRec(barra2, Rectangle{33, 0, (float)barra2.width/2, (float)barra2.height},   Vector2 {695,220},  RAYWHITE);
        DrawTextureRec(barra2, Rectangle{33, 0, (float)barra2.width/2, (float)barra2.height},   Vector2 {800,220},  RAYWHITE);
-       DrawTextureRec(barra2, Rectangle{33, 0, (float)barra2.width/2, (float)barra2.height},   Vector2 {900,220},  RAYWHITE);
-       
+       DrawTextureRec(barra2, Rectangle{33, 0, (float)barra2.width/2, (float)barra2.height},   Vector2 {900,220},  RAYWHITE);  
        DrawTexture(agua, 700, 500, RAYWHITE);DrawTexture(agua, 700, 600, RAYWHITE);DrawTexture(agua, 700, 650, RAYWHITE);
        DrawTexture(agua, 800, 500, RAYWHITE);DrawTexture(agua, 800, 600, RAYWHITE);DrawTexture(agua, 800, 650, RAYWHITE);
-       DrawTexture(agua, 900, 500, RAYWHITE);DrawTexture(agua, 900, 600, RAYWHITE);DrawTexture(agua, 900, 650, RAYWHITE);
-       
+       DrawTexture(agua, 900, 500, RAYWHITE);DrawTexture(agua, 900, 600, RAYWHITE);DrawTexture(agua, 900, 650, RAYWHITE); 
        DrawTextureRec(barra2, Rectangle{33, 0, (float)barra2.width/2, (float)barra2.height},   Vector2 {700,460},  RAYWHITE);
        DrawTextureRec(barra2, Rectangle{33, 0, (float)barra2.width/2, (float)barra2.height},   Vector2 {800,460},  RAYWHITE);
        DrawTextureRec(barra2, Rectangle{33, 0, (float)barra2.width/2, (float)barra2.height},   Vector2 {900,460},  RAYWHITE);
        
-       if (aparecer <= 2) DrawTextureRec(hunter, Rectangle{50, 0, (float)hunter.width/3, (float)hunter.height/4},   Vector2 {400,300},  RAYWHITE);
-       
-      if (aparecer <= 3)  DrawTextureRec(thief, Rectangle{50, 140, (float)thief.width/3, (float)thief.height/4},   Vector2 {600,400},  RAYWHITE);
-       
-      if (aparecer <= 4)  DrawTextureRec(warrior, Rectangle{0, 47, (float)warrior.width/3, (float)warrior.height/4},   Vector2 {700,300},  RAYWHITE);
-       
-      if (aparecer <= 1)  DrawTextureRec(warlock, Rectangle{60, 50, (float)warlock.width/4, (float)warlock.height/4},   Vector2 {300,400},  RAYWHITE);
-       
+      if (aparecer <= 2) DrawTextureRec(hunter, Rectangle{50, 0, (float)hunter.width/3, (float)hunter.height/4},   Vector2 {400,300},  RAYWHITE);  
+      if (aparecer <= 3)  DrawTextureRec(thief, Rectangle{50, 140, (float)thief.width/3, (float)thief.height/4},   Vector2 {600,400},  RAYWHITE);    
+      if (aparecer <= 4)  DrawTextureRec(warrior, Rectangle{0, 47, (float)warrior.width/3, (float)warrior.height/4},   Vector2 {700,300},  RAYWHITE);     
+      if (aparecer <= 1)  DrawTextureRec(warlock, Rectangle{60, 50, (float)warlock.width/4, (float)warlock.height/4},   Vector2 {300,400},  RAYWHITE);      
       if (aparecer <= 0) DrawTextureRec(guerreiro, Rectangle{0, 0, (float)guerreiro.width/4, (float)guerreiro.height/4},   Vector2 {200,250},  RAYWHITE);
-       
-       DrawTexture(barra, 660, 600, RAYWHITE);DrawTexture(barra, 660, 480, RAYWHITE);
-       
+      
+       DrawTexture(barra, 660, 600, RAYWHITE);DrawTexture(barra, 660, 480, RAYWHITE);      
        DrawTexture(caixao, 20, 0, RAYWHITE);
        DrawTexture(caixao, 20, 550, RAYWHITE);
        DrawTexture(demonio, 240, 0, RAYWHITE);
@@ -974,37 +846,23 @@ int item4 = 1;
        if (x >= 950) {
            mapa = 4;
            tempo1 = 0;
+            }
        }
-          
-            
-        }
-        
-        
-        if (aparecer==6){
-             
-             ClearBackground(RAYWHITE);
-             
+       
+        if (aparecer==6){            
+          ClearBackground(RAYWHITE);      
           DrawTexture(Castelo, 0, 0, RAYWHITE);
-              
-        
-        
-         //rei
-         DrawTextureRec(Realeza, Rectangle{50, 0, frameWidth1, frameHeight},   Vector2 {440,190},  RAYWHITE);
-         //rainha
+         DrawTextureRec(Realeza, Rectangle{50, 0, frameWidth1, frameHeight},   Vector2 {440,190},  RAYWHITE);         
          DrawTextureRec(Realeza, Rectangle{200, 0, frameWidth1, frameHeight},   Vector2 {520,190},  RAYWHITE);
-         //principe
          DrawTextureRec(Realeza, Rectangle{330, 0, frameWidth1, frameHeight},   Vector2 {550,190},  RAYWHITE);
-         //princesa
          DrawTextureRec(Realeza, Rectangle{480, 0, frameWidth1, frameHeight},   Vector2 {390,190},  RAYWHITE);
-         //guardas
          for(float i = 0;i <390;i = i +50){
          DrawTextureRec(Realeza, Rectangle{330, 290, frameWidth1, frameHeight},   Vector2 {0 + i,280},  RAYWHITE);}
          for(float i = 590;i <1000;i = i +50){
          DrawTextureRec(Realeza, Rectangle{330, 290, frameWidth1, frameHeight},   Vector2 {0 + i,280},  RAYWHITE);}
          for(float i = 0;i < 1000;i = i + 50){
          DrawTextureRec(Realeza, Rectangle{330, 510, frameWidth1, frameHeight},   Vector2 {0+ i ,520},  RAYWHITE);}
-            
-            
+               
         DrawTexturePro(hud, Rectangle{0, 0, (float)hud.width, (float)hud.height},  Rectangle {0, 420, 1000, 300}, Vector2 {0, 0}, 0, RAYWHITE);
         DrawTextureRec(knightUp, Rectangle{50, 0, frameWidth, (float)knightUp.height},   Vector2 {480,340},  RAYWHITE);
         DrawTextureRec(aventureiros, Rectangle{195, 220, frameWidth2, frameHeight2},   Vector2 {538,390},  RAYWHITE);
@@ -1033,42 +891,27 @@ int item4 = 1;
             DrawText("-Agora iremos continuar a nossa jornada.", 50, 600, 22, RAYWHITE );
             DrawText("Estaremos sempre à vossa disposição!", 50, 620, 22, RAYWHITE );
         }else if(tempo1 < 1800)aparecer = 7;
-           
-           
-            
-            
-            
+ 
             if(IsKeyDown(KEY_E)){
               entrada = 2;
               x = 480.0f, y = 121.0f;
           }
-            
-        
-            
-            
-            
-            
-            
+ 
         }
-        
-        
+
             if (aparecer == 7){
-                
                 ClearBackground(BLACK);
     
-    DrawText("Parabéns por ter finalizado O nosso RPG", screenWidth/2 - 200 , 110, 20, WHITE);
-    DrawText("Grupo:  ", screenWidth/2 -130 , 140, 20, WHITE);
-    DrawText("Júlio César", screenWidth/2 -130, 170, 20, WHITE);
-    DrawText("Leandro Queiroz", screenWidth/2-130 , 200, 20, WHITE);
-    DrawText("Maike Menezes", screenWidth/2 -130, 230, 20, WHITE);
-    DrawText("Pedro Henrique", screenWidth/2 -130, 260, 20, WHITE);
-    DrawText("Thiago Brito", screenWidth/2 -130, 290, 20, WHITE);
-    DrawText("Obrigado Professor!", screenWidth/2 -180 , 400, 30, WHITE);
-   
+            DrawText("Parabéns por ter finalizado O nosso RPG", screenWidth/2 - 200 , 110, 20, WHITE);
+            DrawText("Grupo:  ", screenWidth/2 -130 , 140, 20, WHITE);
+            DrawText("Júlio César", screenWidth/2 -130, 170, 20, WHITE);
+            DrawText("Leandro Queiroz", screenWidth/2-130 , 200, 20, WHITE);
+            DrawText("Maike Menezes", screenWidth/2 -130, 230, 20, WHITE);
+            DrawText("Pedro Henrique", screenWidth/2 -130, 260, 20, WHITE);
+            DrawText("Thiago Brito", screenWidth/2 -130, 290, 20, WHITE);
+            DrawText("Obrigado Professor!", screenWidth/2 -180 , 400, 30, WHITE);
             }
-    
 
-////////////////////////////////////////////////////////////-----Movimentação sem restrições------//////////////////////////////////
          if(x >= 450.0f && y >= 340.0f && entrada == 1){
         DrawTexturePro(hud, Rectangle{0, 0, (float)hud.width, (float)hud.height},  Rectangle {0, 420, 1000, 300}, Vector2 {0, 0}, 0, RAYWHITE);
         DrawTextureRec(knightUp, Rectangle{50, 0, frameWidth, (float)knightUp.height},   Vector2 {480,340},  RAYWHITE);
@@ -1110,11 +953,8 @@ int item4 = 1;
             if(IsKeyDown(KEY_E)){
               entrada = 2;
               x = 480.0f, y = 121.0f;
-          }
-            
+          }   
         }
-            
-    
        }else{
            
         if (IsKeyDown(KEY_D) && IsKeyUp(KEY_W) && IsKeyUp(KEY_S)){
@@ -1236,8 +1076,6 @@ int item4 = 1;
             DrawTextureRec(knightUp, Rectangle{frameWidth * frame, 0, frameWidth, (float)knightUp.height},   Vector2 {x,y},  RAYWHITE);
         }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////    
-        
-        
         if (IsKeyDown(KEY_S) && IsKeyUp(KEY_A) && IsKeyUp(KEY_D)){
             
             if (!collision3 && !collision4 && xM <= 501) y += GetFrameTime() * 100.0f;               
@@ -1275,13 +1113,11 @@ int item4 = 1;
       }
        knight.y=y;   
         knight.x=x; 
-
-      
     }
     EndDrawing();
     }
     
-  if (x >= 600 && comecarC == 1 && aparecer == 2  ) //slime
+  if (x >= 600 && comecarC == 1 && aparecer == 2  ) 
      {
         aparecer = 1;
         inimigovida =60;
@@ -1292,7 +1128,7 @@ int item4 = 1;
         oponente = 1;
        
      }
-     if (x >= 490 && comecarC == 1 && aparecer == 3 ) //lobo
+     if (x >= 490 && comecarC == 1 && aparecer == 3 ) 
      {
         aparecer = 2;
         inimigovida =100;
@@ -1305,7 +1141,7 @@ int item4 = 1;
         quantidade_lobos = 2;
        
      }
-     if (x >= 400 && comecarC == 1 && aparecer == 4) //ogro
+     if (x >= 400 && comecarC == 1 && aparecer == 4) 
      {
         aparecer = 3;
         inimigovida =180;
@@ -1316,7 +1152,7 @@ int item4 = 1;
         oponente = 3;
         
      }
-     if (x >= 290 && comecarC == 1 && aparecer == 5 ) //slime toxico
+     if (x >= 290 && comecarC == 1 && aparecer == 5 ) 
      {
         aparecer = 4; 
         inimigovida = 100;
@@ -1327,7 +1163,7 @@ int item4 = 1;
         oponente = 4;
      
      }
-     if (x >= 800 && comecarC == 1 && aparecer == 1 ) // lamia
+     if (x >= 800 && comecarC == 1 && aparecer == 1 ) 
      {
         aparecer = 0;
         inimigovida =120;
@@ -1340,7 +1176,7 @@ int item4 = 1;
        
      }
   
-     if (x >= 400 && comecarC ==2 && aparecer == 2) // drow arqueiro
+     if (x >= 400 && comecarC ==2 && aparecer == 2)
      {
         aparecer = 3;
         inimigovida =150;
@@ -1353,7 +1189,7 @@ int item4 = 1;
        
      }
      
-     if (x >= 600 && comecarC ==2 && aparecer == 3) // drow ladina
+     if (x >= 600 && comecarC ==2 && aparecer == 3) 
      {
         aparecer = 4;
         inimigovida =150;
@@ -1366,7 +1202,7 @@ int item4 = 1;
        
      }
      
-     if (x >= 700 && comecarC ==2 && aparecer == 4) // drow guerreiro
+     if (x >= 700 && comecarC ==2 && aparecer == 4) 
      {
         inimigovida =200;
         forca = 18;
@@ -1379,7 +1215,7 @@ int item4 = 1;
       
      }
      
-     if (x >= 200 && comecarC ==2 && aparecer == 0) // esqueleto guerreiro
+     if (x >= 200 && comecarC ==2 && aparecer == 0) 
      {
         aparecer = 1;
         inimigovida =150;
@@ -1393,7 +1229,7 @@ int item4 = 1;
      
      }
      
-     if (x >= 300 && comecarC == 2 && aparecer == 1) // esqueleto bruxo
+     if (x >= 300 && comecarC == 2 && aparecer == 1) 
      {
         aparecer = 2;
         inimigovida =150;
@@ -1407,7 +1243,7 @@ int item4 = 1;
      
      }
      
-     if (x >= 950 && comecarC == 2 && aparecer == 5 ) // mago vermelho
+     if (x >= 950 && comecarC == 2 && aparecer == 5 ) 
      {
         inimigovida = 1000;
         mana = 1200;
@@ -1425,7 +1261,6 @@ static int z = 340;
 static int ataque_inimigo;
 ataque_inimigo = 0;
 ataque_especial = 0;
-
 
 if (decisao == 0){
 combate:
@@ -1445,16 +1280,11 @@ sacerdotestun--;
 stun--;
 }
 
-
 if (ataque_inimigo == 1 && stun < 1){
 while (!WindowShouldClose())    
     {
        if (guerreirovida < 1 && magovida < 1 && sacerdotevida < 1) {decisao = 5; break;}
-        BeginDrawing();
-
-            
-            
-            
+        BeginDrawing();    
             if (timer < 3){
                 DrawRectangle( 0, 0, 1000, 740, Fade(RED, 0.8f));
             timer++;}
@@ -1514,11 +1344,8 @@ while (!WindowShouldClose())
             
             
         EndDrawing();
-        //----------------------------------------------------------------------------------
     }
 }
-
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 if (oponente == 1 && ataque_inimigo == 1 && stun < 1) //slime
@@ -1593,7 +1420,6 @@ if (oponente == 3 && ataque_inimigo == 1 && stun < 1) //ogro
 ataque_especial++;            
         }  
 }
-
 
 if (oponente == 4 && ataque_inimigo == 1 && stun < 1) //slime toxico
 {
